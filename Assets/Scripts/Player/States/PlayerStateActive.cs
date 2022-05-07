@@ -22,7 +22,20 @@ public class PlayerStateActive : FSMState<Player>
         var movement = moveX + moveY;
         movement *= owner.movementSpeed * Time.deltaTime;
 
+        //apply gravity
+        if (!owner.characterController.isGrounded)
+        {
+            _lastGravityVelocity += Physics.gravity.y * Time.deltaTime;
+            movement = new Vector3(movement.x, _lastGravityVelocity, movement.z);
+        }
+        else _lastGravityVelocity = 0;
+
+        //Debug.Log(movement);
         owner.characterController.Move(movement);
     }
+    #endregion
+
+    #region Properties
+    private float _lastGravityVelocity;
     #endregion
 }
