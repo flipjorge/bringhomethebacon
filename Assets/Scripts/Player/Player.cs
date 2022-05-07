@@ -1,17 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
     #region Lifecycle
     protected void Awake()
     {
         _fsm = new PlayerFSM(this);
+        input = new InputActions();
+        characterController = GetComponent<CharacterController>();
     }
 
     private void Start()
     {
         //TODO: start as idle and wait for level to set to active state
         _fsm.goToState(_fsm.activeState);
+        input.Enable();
     }
 
     private void Update()
@@ -20,7 +25,20 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Properties
+    public float movementSpeed = 1;
+    #endregion
+
     #region FSM
     protected PlayerFSM _fsm;
+    #endregion
+
+    #region Input
+    public InputActions input;
+    #endregion
+
+    #region Controller
+    [HideInInspector]
+    public CharacterController characterController;
     #endregion
 }
