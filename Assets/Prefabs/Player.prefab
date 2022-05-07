@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a30dde5fd17e634aa819eac8160966f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 8
   characterController: {fileID: 4389446591526065805}
 --- !u!33 &7621723747900841862
 MeshFilter:
