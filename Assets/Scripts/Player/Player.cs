@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     #region Properties
     public float movementSpeed = 1;
+    public float rotationSpeed = 0.1f;
     #endregion
 
     #region FSM
@@ -40,5 +41,9 @@ public class Player : MonoBehaviour
     #region Controller
     [HideInInspector]
     public CharacterController characterController;
+    #endregion
+
+    #region Model
+    public Transform model;
     #endregion
 }
