@@ -24,8 +24,6 @@ public class PlayerStateActive : FSMState<Player>
         var movement = moveX + moveY;
         movement *= owner.movementSpeed * Time.deltaTime;
 
-        Debug.Log(movement.magnitude);
-
         //calculate rotation
         if (movement.magnitude > 0.01f)
             _lookRotation = Quaternion.LookRotation(movement, Vector3.up);
